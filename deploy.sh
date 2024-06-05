@@ -8,5 +8,5 @@ make prepare-frontend-local;
 make build-frontend;
 make bootstrap-frontend;
 make deploy-frontend;
-distributionId=$(awslocal cloudfront list-distributions | jq -r '.DistributionList.Items[0].Id');
+distributionId=$(awslocal --endpoint-url=$AWS_ENDPOINT_URL cloudfront list-distributions | jq -r '.DistributionList.Items[0].Id');
 echo \"PREVIEW_URL=$AWS_ENDPOINT_URL/cloudfront/$distributionId/\";
